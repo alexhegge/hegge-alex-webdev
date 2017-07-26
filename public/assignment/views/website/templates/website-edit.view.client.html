@@ -1,14 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Edit Website</title>
-    <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>-->
-    <link href="../vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="css/styles.css" rel="stylesheet"/>
-</head>
-<body>
-
 <div class="ach ach-website-edit">
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
@@ -21,7 +10,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="website-list.html">Edit Website
+                <a class="navbar-brand" href="#!/user/{{model.userId}}/website">Edit Website
                     <span class="pull-left glyphicon glyphicon-chevron-left"></span>
                 </a>
             </div>
@@ -29,7 +18,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a class= "navbar-brand" href="website-list.html">
+                    <li><a class= "navbar-brand" href="#!/user/{{model.userId}}/website">
                         <span class="pull-left glyphicon glyphicon-check"></span>
                     </a></li>
                 </ul>
@@ -48,7 +37,7 @@
                         <div class="row">
                             <div class="col-xs-10">Name</div>
                             <div class="col-xs-2">
-                                <a href="website-new.html">
+                                <a href="#!/user/{{model.userId}}/website/new">
                                     <span class="pull-right glyphicon glyphicon-plus"></span>
                                 </a>
                             </div>
@@ -136,15 +125,15 @@
 
 
                 <a class="btn btn-default btn-primary btn-block"
-                   href="website-list.html"
+                   href="#!/user/{{model.userId}}/website"
                    role="button">Okay</a>
 
                 <a class="btn btn-default btn-warning btn-block"
-                   href="website-list.html"
+                   href="#!/user/{{model.userId}}/website"
                    role="button">Cancel</a>
 
                 <a class="btn btn-default btn-danger btn-block"
-                   href="website-list.html"
+                   href="#!/user/{{model.userId}}/website"
                    role="button">Delete</a>
             </div>
         </div>
@@ -155,7 +144,7 @@
         <div class="container-fluid">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a class="navbar-brand" href="profile.html">
+                    <a class="navbar-brand" href="#!/profile/{{model.userId}}">
                         <span class="pull-right glyphicon glyphicon-user"></span>
                     </a>
                 </li>
@@ -164,5 +153,3 @@
     </nav>
 
 </div>
-</body>
-</html>

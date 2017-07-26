@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>New Page</title>
-    <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>-->
-    <link href="../vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="css/styles.css" rel="stylesheet"/>
-</head>
-<body>
-
-<div class="ach ach-page-new">
+<div class="ach ach-page-edit">
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -21,7 +10,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="page-list.html">New Page
+                <a class="navbar-brand" href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page">Edit Page
                     <span class="pull-left glyphicon glyphicon-chevron-left"></span>
                 </a>
             </div>
@@ -29,7 +18,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a class= "navbar-brand" href="page-list.html">
+                    <li><a class= "navbar-brand" href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page">
                         <span class="pull-left glyphicon glyphicon-check"></span>
                     </a></li>
                 </ul>
@@ -44,11 +33,15 @@
             <div class="col-xs-3 visible-lg ach-split-view-left">
 
                 <ul class="list-group">
-                    <li class="list-group-item active">
+                    <li ng-repeat="page in model.pages" class="list-group-item active">
                         <div class="row">
-                            <div class="col-xs-10">Name</div>
+                            <div class="col-xs-10">
+                                <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}/widget">
+                                    {{page.name}}
+                                </a>
+                            </div>
                             <div class="col-xs-2">
-                                <a href="page-new.html">
+                                <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}">
                                     <span class="pull-right glyphicon glyphicon-plus"></span>
                                 </a>
                             </div>
@@ -95,27 +88,35 @@
             </div>
             <div class="col-xs-12 col-lg-9 ach-split-view-right">
 
-                <label for="name">Name</label>
-                <input name="firstName"
+                <label for="pageName">Page Name</label>
+                <input name="pageName"
                        placeholder="Page Name"
+                       type="text"
                        class="form-control"
-                       id="name"/>
+                       ng-model="model.page.name"
+                       id="pageName"/>
 
-                <label for="description">Description</label>
+                <label for="title">Title</label>
                 <textarea name="firstName"
-                          rows="5"
-                          placeholder="Page Description"
+                          placeholder="Page Title"
                           class="form-control"
-                          id="description"></textarea>
+                          type="text"
+                          ng-model="model.page.title"
+                          id="title"></textarea>
 
 
                 <a class="btn btn-default btn-primary btn-block"
-                   href="page-list.html"
-                   role="button">Create</a>
+                   href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page"
+                   role="button">Okay</a>
+
+                <a class="btn btn-default btn-warning btn-block"
+                   href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page"
+                   role="button">Cancel</a>
 
                 <a class="btn btn-default btn-danger btn-block"
-                   href="page-list.html"
-                   role="button">Cancel</a>
+                   ng-click="model.deletePage()"
+                   href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page"
+                   role="button">Delete</a>
             </div>
         </div>
 
@@ -125,7 +126,7 @@
         <div class="container-fluid">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a class="navbar-brand" href="profile.html">
+                    <a href="#!/profile/{{model.userId}}">
                         <span class="pull-right glyphicon glyphicon-user"></span>
                     </a>
                 </li>
@@ -134,5 +135,3 @@
     </nav>
 
 </div>
-</body>
-</html>
