@@ -1,4 +1,5 @@
-<div class="ach ach-page-list">
+
+<div class="ach ach-widget-list">
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -28,20 +29,13 @@
 
 
     <div class="container-fluid">
+        <h2>Widget List</h2>
 
-        <div ng-repeat="widget in widgets">
-            <div ng-switch="widget.widgetType">
-                <div ng-switch-when="HEADING">
-                    <ng-include src="'widget-heading.view.client.html'">
-                </div>
-                <div ng-switch-when="IMAGE">
-                    <ng-include src="'widget-image.view.client.html'">
-                </div>
-                <div ng-switch-when="YOUTUBE">
-                    <ng-include src="'widget-youtube.view.client.html'">
-                </div>
-            </div>
+        <div ng-repeat="widget in model.widgets">
+            <div ng-include="model.getWidgetIncludeUrl(widget.widgetType)"></div>
         </div>
+
+        {{model.widgets}}
 
     </div>
 

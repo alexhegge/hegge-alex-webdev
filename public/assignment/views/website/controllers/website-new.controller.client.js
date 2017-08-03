@@ -6,20 +6,27 @@
         .module("WebAppMaker")
         .controller("WebsiteNewController", WebsiteNewController);
 
-    function WebsiteNewController($routeParams, websiteService) {
+    function WebsiteNewController($location, $routeParams, websiteService) {
         var model = this;
 
-        model.userId = $routeParams.userId;
+        model.userId = $routeParams["userId"];
 
         model.addWebsite = addWebsite;
 
         function init() {
-            model.websites = websiteService.findWebsitesByUser(model.websiteId);
+            websiteService
+                .findWebsitesByUser(model.userId)
+                .then(function (websites) {
+                    model.websites = websites;
+                });
         }
         init();
 
         function addWebsite() {
-            model.website = websiteService.createWebsite(model.userId, model.website);
+            websiteService.addWebsite(model.userId, website)
+                .then(function () {
+                    $location.url("/user/"+model.userId+"/website");
+                });
         }
 
     }

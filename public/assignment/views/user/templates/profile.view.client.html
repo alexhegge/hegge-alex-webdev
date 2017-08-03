@@ -31,21 +31,21 @@
 
         <label for="firstName">First Name</label>
         <input name="firstName"
-               ng-model="currentUser.firstName"
+               ng-model="model.user.firstName"
                placeholder="Alice"
                class="form-control"
                id="firstName"/>
 
         <label for="lastName">Last Name</label>
         <input name="lastName"
-               ng-model="currentUser.lastName"
+               ng-model="model.user.lastName"
                placeholder="Wonderland"
                class="form-control"
                id="lastName"/>
 
         <label for="username">Username</label>
         <input name="username"
-               ng-model="currentUser.username"
+               ng-model="model.user.username"
                readonly
                value="alice"
                placeholder="alice"
@@ -66,7 +66,7 @@
                id="dob"/>
 
         <a class="btn btn-default btn-primary btn-block"
-           href="#!/user/{{model.userId}}/website"
+           href="#!/user/{{model.user._id}}/website"
            role="button">Websites</a>
 
         <a class="btn btn-default btn-danger btn-block"
@@ -78,7 +78,7 @@
            role="button">Unregister</a>
 
         <a class="btn btn-default btn-primary btn-block"
-           ng-click="model.updateUser()"
+           ng-click="model.updateUser(model.user)"
            role="button">Update</a>
     </div>
 
@@ -87,7 +87,7 @@
         <div class="container-fluid">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a class="navbar-brand" href="#!/profile/{{model.userId}}">
+                    <a class="navbar-brand" href="#!/profile/{{model.user._id}}">
                         <span class="pull-right glyphicon glyphicon-user"></span>
                     </a>
                 </li>

@@ -17,13 +17,13 @@
         model.deletePage = deletePage;
 
         function init() {
-            model.pages = pageService.findPagesByWebsiteId(model.websiteId);
-            model.page = pageService.findPageById(model.pageId)
+            model.pages = pageService.findPagesByWebsiteId(model.userId, model.websiteId);
+            model.page = pageService.findPageById(model.userId, model.websiteId, model.pageId)
         }
         init();
 
         function editPage() {
-            model.page = pageService.updatePage(model.pageId, model.page);
+            model.page = pageService.updatePage(model.userId, model.websiteId, model.pageId, model.page);
         }
 
         function deletePage() {

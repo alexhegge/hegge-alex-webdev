@@ -21,7 +21,7 @@
         init();
 
         function addWidget() {
-            model.widget = websiteService.createWidget(model.pageId, widget);
+            model.widget = widgetService.createWidget(model.pageId, widget);
         }
 
     }

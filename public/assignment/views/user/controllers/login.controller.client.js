@@ -19,13 +19,17 @@
                 model.errorMessage = "User not found";
                 return;
             }
-            user = userService.findUserByCredentials(user.username, user.password);
-            if(user === null) {
-                model.errorMessage = "User not found";
-            } else {
-                $rootScope.currentUser = user;
-                $location.url("profile/"+user._id);
-            }
+            return userService.findUserByCredentials(user.username, user.password)
+
+                .then(function (response) {
+                    user = response.data;
+                    if(user === null) {
+                        model.errorMessage = "User not found";
+                    } else {
+                        $rootScope.currentUser = user;
+                        $location.url("profile/"+user._id);
+                    }
+                });
         }
     }
 })();

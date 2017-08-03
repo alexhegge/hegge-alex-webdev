@@ -7,7 +7,14 @@
         .module("WebAppMaker")
         .config(Config);
 
-    function Config($routeProvider) {
+    function Config($routeProvider, $httpProvider) {
+
+
+        $httpProvider.defaults.headers.post['Content-Type'] = 'application/json; charset=utf-8';
+        $httpProvider.defaults.headers.post['Accept'] = 'application/json, text/javascript';
+        $httpProvider.defaults.headers.post['Access-Control-Max-Age'] = '1728000';
+
+
         $routeProvider
             .when("/", {
                 templateUrl: "views/home/home.view.client.html",
@@ -60,18 +67,18 @@
                 controller: "PageEditController",
                 controllerAs: "model"
             })
-            .when("/user/:uid/website/:websiteId/page/:pageId/widget", {
-                templateUrl: "views/page/widget-list.view.client.html",
+            .when("/user/:userId/website/:websiteId/page/:pageId/widget", {
+                templateUrl: "views/widget/templates/widget-list.view.client.html",
                 controller: "WidgetListController",
                 controllerAs: "model"
             })
-            .when("/user/:uid/website/:websiteId/page/:pageId/widget/new", {
-                templateUrl: "views/page/widget-choose.view.client.html",
+            .when("/user/:userId/website/:websiteId/page/:pageId/widget/new", {
+                templateUrl: "views/widget/templates/widget-choose.view.client.html",
                 controller: "WidgetChooseController",
                 controllerAs: "model"
             })
-            .when("/user/:uid/website/:websiteId/page/:pageId/widget/:widgetId", {
-                templateUrl: "views/page/widget-edit.view.client.html",
+            .when("/user/:userId/website/:websiteId/page/:pageId/widget/:widgetId", {
+                templateUrl: "views/widget/templates/widget-edit.view.client.html",
                 controller: "WidgetEditController",
                 controllerAs: "model"
             })

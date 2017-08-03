@@ -1,0 +1,18 @@
+<ul>
+    <li ng-repeat="widget in model.widgets">
+        <div ng-switch="widget.widgetType">
+            <div ng-switch-when="HEADING">
+                <ng-include src="'views/widget/templates/widgets/widget-heading.view.client.html'">
+            </div>
+            <div ng-switch-when="IMAGE">
+                <ng-include src="'views/widget/templates/widgets/widget-image.view.client.html'">
+            </div>
+            <div ng-switch-when="YOUTUBE">
+                <ng-include src="'views/widget/templates/widgets/widget-youtube.view.client.html'">
+            </div>
+            <div ng-switch-when="HTML">
+                <ng-include src="'views/widget/templates/widgets/widget-html.view.client.html'">
+            </div>
+        </div>
+    </li>
+</ul>

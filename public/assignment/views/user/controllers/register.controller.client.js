@@ -15,13 +15,21 @@
         init();
 
         function createUser(user) {
-            var _user = userService.findUserByUsername(user.username);
-            if(!_user) {
-                var user = userService.createUser(user);
-                $location.url("/profile/"+user._id);
-            } else {
-                model.error = "User already exists";
-            }
+            userService.findUserByUsername(user.username)
+                .then(function (response) {
+                    var responseuser = response.data;
+                    if (responseuser === "0") {
+                        return userService.createUser(user)
+                            .then(function(response){
+                                user = response.data;
+                                $location.url("/user/" + user._id);
+                                return;
+                            });
+                    } else {
+                        model.errorMessage = "username already exist";
+                    }
+                    return;
+                })
         }
     }
 })();

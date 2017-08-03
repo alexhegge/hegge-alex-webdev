@@ -15,14 +15,15 @@
         model.addPage = addPage;
 
         function init() {
-            model.pages = pageService.findPagesByWebsiteId(model.websiteId);
+            model.pages = pageService.findPagesByWebsiteId(model.userId, model.websiteId);
         }
         init();
 
         function addPage() {
-            model.page = pageService.createPage(model.websiteId, model.page);
+            model.page = pageService.createPage(model.userId, model.websiteId, model.page);
         }
 
     }
+
 
 })();

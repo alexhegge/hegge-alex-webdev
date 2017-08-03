@@ -6,22 +6,25 @@
 
     function ProfileController($routeParams, userService, $location) {
         var model = this;
-        model.userId = $routeParams["userId"];
+        var userId = $routeParams["userId"];
 
         model.updateUser = updateUser;
         model.deleteUser = deleteUser;
 
         function init() {
-            model.user = userService.findUserById(model.userId)
+            var promise = userService.findUserById(userId);
+            promise.then(function(response) {
+                model.user = response.data;
+            })
         }
         init();
 
-        function updateUser() {
-            userService.updateUser(model.userId, model.user);
+        function updateUser(user) {
+            userService.updateUser(user._id, user);
         }
 
-        function deleteUser() {
-            userService.deleteUser(model.user._id);
+        function deleteUser(user) {
+            userService.deleteUser(user._id);
             $location.url("/login");
         }
     }

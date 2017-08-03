@@ -34,6 +34,16 @@
             </div>
             <div ng-switch-when="IMAGE">
                 <ng-include src="'widget-image-edit.view.client.html'">
+                    <form action="/api/upload"   method="post" enctype="multipart/form-data">
+                        <input  name="myFile"    type="file" class="form-control"/>
+                        <input  name="width"     value="{{model.widget.width}}" style="display: none"/>
+                        <input  name="userId"    value="{{model.userId}}"   style="display: none"/>
+                        <input  name="websiteId" value="{{model.websiteId}}"   style="display: none"/>
+                        <input  name="pageId"    value="{{model.pageId}}"   style="display: none"/>
+                        <input  name="widgetId"  value="{{model.widget._id}}"   style="display: none"/>
+                        <button type="submit"    class="btn btn-block btn-primary">Upload Image</button>
+                    </form>
+
             </div>
             <div ng-switch-when="YOUTUBE">
                 <ng-include src="'widget-youtube-edit.view.client.html'">

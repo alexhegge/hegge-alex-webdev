@@ -112,12 +112,14 @@
 
                 <label for="name">Name</label>
                 <input name="firstName"
+                       ng-model="website.name"
                        placeholder="Name"
                        class="form-control"
                        id="name"/>
 
                 <label for="description">Description</label>
                 <textarea name="firstName"
+                          ng-model="website.description"
                           rows="5"
                           placeholder="Description"
                           class="form-control"
@@ -125,11 +127,11 @@
 
 
                 <a class="btn btn-default btn-primary btn-block"
-                   href="#!/profile/{{model.userId}}/website"
+                   ng-click="model.createWebsite(website)"
                    role="button">Create</a>
 
                 <a class="btn btn-default btn-danger btn-block"
-                   href="#!/profile/{{model.userId}}/website"
+                   href="#!/profile/{{model.user._id}}/website"
                    role="button">Cancel</a>
             </div>
         </div>
