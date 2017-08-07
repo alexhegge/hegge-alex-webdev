@@ -30,7 +30,7 @@
 
         function findWidgetsByPageId(userId, websiteId, pageId) {
 
-            var url = "/api/assignment/user/" + userId + "/website/" + websiteId + "/page/" + pageId;
+            var url = "/api/assignment/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget";
             return $http.get(url)
                 .then(function (response) {
                     return response.data;
