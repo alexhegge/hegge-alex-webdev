@@ -12,20 +12,25 @@
         model.deleteUser = deleteUser;
 
         function init() {
-            var promise = userService.findUserById(userId);
-            promise.then(function(response) {
-                model.user = response.data;
-            })
+            userService.findUserById(userId)
+                .then(function (response) {
+                    model.user = response.data
+                })
         }
         init();
 
         function updateUser(user) {
-            userService.updateUser(user._id, user);
+            userService.updateUser(userId, user);
         }
 
         function deleteUser(user) {
-            userService.deleteUser(user._id);
-            $location.url("/login");
+            userService
+                .deleteUser(user._id)
+                .then(function (response){
+                    if(response.data === "1"){
+                        $location.url("#!/login");
+                    }
+                });
         }
     }
 

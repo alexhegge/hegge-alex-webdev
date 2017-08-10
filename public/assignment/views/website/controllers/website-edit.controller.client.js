@@ -12,29 +12,40 @@
         model.websiteId = $routeParams["websiteId"];
         model.userId = $routeParams["userId"];
 
-        //model.updateWebsite = updateWebsite;
-        //model.deleteWebsite = deleteWebsite;
+        model.deleteWebsite = deleteWebsite;
+        model.updateWebsite = updateWebsite;
+        //model.createWebsite = createWebsite;
 
         function init() {
-            websiteService.findWebsitesByUser(model.userId)
-                .then(function (websites) {
-                    model.websites = websites;
-                });
-            websiteService
-                .findWebsiteById(model.userId, model.websiteId)
-                .then(function (response) {
-                    model.website = response.data;
-                });
+            model.websites = websiteService.findWebsitesByUser(model.userId);
+            model.website = websiteService.findWebsiteById(model.websiteId);
         }
         init();
 
-        //function updateWebsite(website) {
-        //    websiteService.updateWebsite(model.websiteId, website);
-        //}
+        function deleteWebsite(website) {
+            websiteService
+                .deleteWebsite(model.userId, website.website._id)
+                .then(function (status) {
+                    $location.url("/user/"+model.userId+"/website");
+                });
+        }
 
-        //function deleteWebsite() {
-        //    websiteService.deleteWebsite(model.websiteId);
-        //}
+
+        function updateWebsite(website) {
+            websiteService
+                .updateWebsite(model.userId, model.websiteId, website)
+                .then(function () {
+                    $location.url("/user/" + model.userId + "/website")
+                });
+        }
+/*
+        function createWebsite(website) {
+            website.developerId = model.userId;
+            websiteService.createWebsite(website);
+            $location.url('/user/'+model.userId+'/website');
+        }
+        */
+
     }
 
 })();

@@ -25,7 +25,7 @@
         }
 
         return {
-            templateUrl: "views/widget/templates/widget-list.component.client.html"
+            templateUrl: "../views/widget/templates/widget-list.component.client.html",
             link: linkFunction
         }
     }

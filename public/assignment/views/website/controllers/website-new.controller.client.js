@@ -11,7 +11,7 @@
 
         model.userId = $routeParams["userId"];
 
-        model.addWebsite = addWebsite;
+        model.createWebsite = createWebsite;
 
         function init() {
             websiteService
@@ -22,12 +22,15 @@
         }
         init();
 
-        function addWebsite() {
-            websiteService.addWebsite(model.userId, website)
-                .then(function () {
-                    $location.url("/user/"+model.userId+"/website");
+        function createWebsite(website) {
+            websiteService.createWebsite(model.userId, website)
+                .then(function (website) {
+                    $location.url("/user/"+ model.userId +"/website");
                 });
         }
+
+
+
 
     }
 

@@ -1,2 +1,8 @@
-<div ng-bind-html="model.trustHtmlContent(widget.text)">
+<div class="row">
+    <div class="col-xs-10" ng-bind-html="model.trustHTMLContent(widget.text)">
+    </div>
+    <a class="col-xs-2"
+       href="#!/user/{{model.user_id}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
+        <span class="glyphicon glyphicon-cog pull-right" name="list-glyph"></span>
+    </a>
 </div>

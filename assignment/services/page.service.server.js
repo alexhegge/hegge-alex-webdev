@@ -3,6 +3,9 @@
  */
 
 var app = require("../../express");
+var pageModel = require("../models/page.model.server");
+
+//pause here
 
 var pages = [
     { "_id": "321", "name": "Post 1", "websiteId": "456", "description": "Lorem" },
@@ -42,16 +45,12 @@ function findPageById(req, res) {
 
 function findPagesByWebsiteId(req, res) {
     var websiteId = req.params.websiteId;
-    var sites = [];
 
-
-    for(var p in pages) {
-        if(pages[p].websiteId === websiteId) {
-            sites.push(pages[p]);
-        }
-    }
-
-    res.json(sites);
+    pageModel
+        .findPagesByWebsiteId(websiteId)
+        .then(function (pages) {
+            response.send(pages);
+        });
 }
 
 function updatePage(req, res) {

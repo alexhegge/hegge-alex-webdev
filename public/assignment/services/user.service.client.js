@@ -7,6 +7,15 @@
         .factory("userService", userService);
 
     function userService($http) {
+
+
+        var users = [
+            {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder", isAdmin: true  },
+            {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley"  },
+            {_id: "345", username: "charly",   password: "charly",   firstName: "Charly", lastName: "Garcia"  },
+            {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi" }
+        ];
+
         var api = {
             "createUser": createUser,
             "findUserById": findUserById,
@@ -20,9 +29,15 @@
 
 
         function createUser(user) {
-            var url = "/api/assingment/user";
+            var url = "/api/assignment/user";
 
-            return $http.post(url, user);
+
+            console.log(user);
+            return $http.post(url, user)
+                .then(function (response) {
+                    return response.data;
+                })
+
         }
 
         function findUserById(userId)  {
@@ -57,7 +72,11 @@
         }
 
         function deleteUser(userId) {
-            return $http.delete("/api/assignment/user/" + userId);
+            var url = "/api/assignment/user/" + userId;
+            return $http.delete(url)
+                .then(function (response) {
+                    return response.data;
+                });
         }
 
 

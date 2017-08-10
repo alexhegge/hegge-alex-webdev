@@ -17,7 +17,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a class= "navbar-brand" href="#!/profile/{{currentUser._id}}">
+                    <li><a class= "navbar-brand" href="#!/user/{{currentUser._id}}">
                         <span class="pull-left glyphicon glyphicon-check"></span>
                     </a></li>
                 </ul>
@@ -30,14 +30,14 @@
 
         <div ng-switch="widget.widgetType">
             <div ng-switch-when="HEADING">
-                <ng-include src="'widget-heading-edit.view.client.html'">
+                <ng-include src="'widgets/widget-heading-edit.view.client.html'">
             </div>
             <div ng-switch-when="IMAGE">
-                <ng-include src="'widget-image-edit.view.client.html'">
+                <ng-include src="'widgets/widget-image-edit.view.client.html'">
                     <form action="/api/upload"   method="post" enctype="multipart/form-data">
                         <input  name="myFile"    type="file" class="form-control"/>
                         <input  name="width"     value="{{model.widget.width}}" style="display: none"/>
-                        <input  name="userId"    value="{{model.userId}}"   style="display: none"/>
+                        <input  name="userId"    value="{{model.user_id}}"   style="display: none"/>
                         <input  name="websiteId" value="{{model.websiteId}}"   style="display: none"/>
                         <input  name="pageId"    value="{{model.pageId}}"   style="display: none"/>
                         <input  name="widgetId"  value="{{model.widget._id}}"   style="display: none"/>
@@ -46,7 +46,11 @@
 
             </div>
             <div ng-switch-when="YOUTUBE">
-                <ng-include src="'widget-youtube-edit.view.client.html'">
+                <ng-include src="'widgets/widget-youtube-edit.view.client.html'">
+            </div>
+
+            <div ng-switch-when="HTML">
+                <ng-include src="'widgets/widget-html-edit.view.client.html'">
             </div>
         </div>
 
@@ -56,7 +60,7 @@
         <div class="container-fluid">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a class="navbar-brand" href="#!/profile/{{model.userId}}">
+                    <a class="navbar-brand" href="#!/user/{{model.user_id}}">
                         <span class="pull-right glyphicon glyphicon-user"></span>
                     </a>
                 </li>

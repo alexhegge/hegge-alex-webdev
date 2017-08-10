@@ -18,7 +18,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a class= "navbar-brand" href="#!/user/{{model.userId}}/website">
+                    <li><a class= "navbar-brand" href="#!/user/{{model.user._id}}/website">
                         <span class="pull-left glyphicon glyphicon-check"></span>
                     </a></li>
                 </ul>
@@ -28,121 +28,95 @@
 
 
     <div class="container-fluid">
-
         <div class="row">
-            <div class="col-xs-3 visible-lg ach-split-view-left">
-
+            <div class="col-sm-4 hidden-xs srollable-left">
                 <ul class="list-group">
                     <li class="list-group-item active">
                         <div class="row">
-                            <div class="col-xs-10">Name</div>
-                            <div class="col-xs-2">
-                                <a href="#!/user/{{model.userId}}/website/new">
-                                    <span class="pull-right glyphicon glyphicon-plus"></span>
+                            <div class="col-lg-5 col-md-8 col-sm-11 col-xs-6">
+                                Website Name
+                            </div>
+                            <div class="col-lg-3 visible-lg">
+                                Created
+                            </div>
+                            <div class="col-md-2 hidden-sm  hidden-xs">
+                                Updated
+                            </div>
+                            <div class="col-sm-2 col-xs-6">
+
+                            </div>
+                        </div>
+                    </li>
+
+
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-lg-5 col-md-8 col-sm-8 col-xs-8">
+                                <a href="../page/page-list.html">
+                                    Cras justo odio
                                 </a>
                             </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-xs-10">Wikipedia</div>
-                            <div class="col-xs-2">
-                                <span class="glyphicon glyphicon-cog pull-right"></span>
+                            <div class="col-lg-3 visible-lg">
+                                1/1/2017
                             </div>
-                        </div>
-
-                    </li>
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-xs-10">
-                                Facebook
+                            <div class="col-md-2 hidden-sm  hidden-xs">
+                                2/2/2017
                             </div>
-                            <div class="col-xs-2">
-                                <span class="glyphicon glyphicon-cog pull-right"></span>
+                            <div class="col-sm-4 col-xs-4">
+                                <!--<a href="website-edit.html" class="pull-right">-->
+                                <!--<span class="glyphicon glyphicon-cog pull-right"></span>-->
+                                <!--</a>-->
                             </div>
                         </div>
                     </li>
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-xs-10">Twitter
-                            </div>
-                            <div class="col-xs-2">
-                                <span class="glyphicon glyphicon-cog pull-right"></span>
-                            </div>
-                        </div>
-
-
-                    </li>
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-xs-10">Amazon</div>
-                            <div class="col-xs-2"></div>
-                        </div>
-                    </li>
-                    <li class="list-group-item">Website ABC</li>
-                    <li class="list-group-item">Website ABC</li>
-                    <li class="list-group-item">Website ABC</li>
-                    <li class="list-group-item">Website ABC</li>
-                    <li class="list-group-item">Website ABC</li>
-                    <li class="list-group-item">Website ABC</li>
-                    <li class="list-group-item">Website ABC</li>
-                    <li class="list-group-item">Website ABC</li>
-                    <li class="list-group-item">Website ABC</li>
-                    <li class="list-group-item">Website ABC</li>
-                    <li class="list-group-item">Website ABC</li>
-                    <li class="list-group-item">Website ABC</li>
-                    <li class="list-group-item">Website ABC</li>
-                    <li class="list-group-item">Website ABC</li>
-                    <li class="list-group-item">Website ABC</li>
-                    <li class="list-group-item">Website ABC</li>
-                    <li class="list-group-item">Website ABC</li>
-                    <li class="list-group-item">Website ABC</li>
-                    <li class="list-group-item">Website ABC</li>
-                    <li class="list-group-item">Website ABC</li>
-                    <li class="list-group-item">Website ABC</li>
-                    <li class="list-group-item">Website ABC</li>
-                    <li class="list-group-item">Website ABC</li>
-                    <li class="list-group-item">Website ABC</li>
-                    <li class="list-group-item">Website ABC</li>
-                    <li class="list-group-item">Website ABC</li>
+                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                    <li class="list-group-item">Morbi leo risus</li>
+                    <li class="list-group-item">Porta ac consectetur ac</li>
+                    <li class="list-group-item">Vestibulum at eros</li>
+                    <li class="list-group-item">Vestibulum at eros</li>
+                    <li class="list-group-item">Vestibulum at eros</li>
+                    <li class="list-group-item">Vestibulum at eros</li>
+                    <li class="list-group-item">Vestibulum at eros</li>
+                    <li class="list-group-item">Vestibulum at eros</li>
+                    <li class="list-group-item">Vestibulum at eros</li>
+                    <li class="list-group-item">Vestibulum at eros</li>
+                    <li class="list-group-item">Vestibulum at eros</li>
+                    <li class="list-group-item">Vestibulum at eros</li>
+                    <li class="list-group-item">Vestibulum at eros</li>
+                    <li class="list-group-item">Vestibulum at eros</li>
+                    <li class="list-group-item">Vestibulum at eros</li>
+                    <li class="list-group-item">Vestibulum at eros</li>
+                    <li class="list-group-item">Vestibulum at eros</li>
+                    <li class="list-group-item">Vestibulum at eros</li>
+                    <li class="list-group-item">Vestibulum at eros</li>
+                    <li class="list-group-item">Vestibulum at eros</li>
                 </ul>
-
             </div>
-            <div class="col-xs-12 col-lg-9 ach-split-view-right">
-
+            <div class="col-xs-12 col-sm-8">
                 <label for="name">Name</label>
-                <input name="firstName"
+                <input id="name"
                        ng-model="website.name"
-                       placeholder="Name"
-                       class="form-control"
-                       id="name"/>
+                       class="form-control"/>
 
                 <label for="description">Description</label>
-                <textarea name="firstName"
+                <textarea id="description"
                           ng-model="website.description"
                           rows="5"
-                          placeholder="Description"
-                          class="form-control"
-                          id="description"></textarea>
+                          class="form-control"></textarea>
 
-
-                <a class="btn btn-default btn-primary btn-block"
-                   ng-click="model.createWebsite(website)"
-                   role="button">Create</a>
-
-                <a class="btn btn-default btn-danger btn-block"
-                   href="#!/profile/{{model.user._id}}/website"
-                   role="button">Cancel</a>
+                <a ng-click="model.createWebsite(website)"
+                   class="btn btn-block btn-success">
+                    Create
+                </a>
             </div>
         </div>
-
     </div>
 
     <nav class="navbar navbar-default navbar-fixed-bottom">
         <div class="container-fluid">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a class="navbar-brand" href="#!/profile/{{model.userId}}">
+                    <a class="navbar-brand" href="#!/user/{{model.user._id}}">
                         <span class="pull-right glyphicon glyphicon-user"></span>
                     </a>
                 </li>
