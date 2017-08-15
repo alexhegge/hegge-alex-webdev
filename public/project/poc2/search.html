@@ -1,0 +1,27 @@
+<h1>Beer API</h1>
+<h2>Search By Brewery Name</h2>
+<input placeholder="Enter Brewery Name"
+       ng-model="model.breweryName"
+       class="form-control"/>
+<button ng-click="model.getBrewery(model.breweryName)" class="btn btn-primary btn-block">
+    Search
+
+</button>
+
+
+
+
+<table class="table">
+
+    <a> {{model.breweries}}</a>
+    <tr ng-repeat="brewery in model.breweries">
+        <td>
+            <a href="#!/details/{{brewery.name}}">
+                {{brewery.name}}
+            </a>
+        </td>
+        <!--<td>
+            <img ng-src="{{movie.Poster}}"/>
+        </td>-->
+    </tr>
+</table>
