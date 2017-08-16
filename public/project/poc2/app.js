@@ -23,16 +23,21 @@
     function detailsController($routeParams, beerService) {
         var model = this;
 
-        model.breweryId = $routeParams.breweryId;
+        breweryId = $routeParams.breweryId;
 
+        console.log(breweryId);
         function init() {
             beerService
-                .getBeersFromBrewery(model.breweryId)
-                .then(function(response){
-                    model.beer = response.data.brewery.beer;
-                });
+                .getBreweryDetails(breweryId)
+                .then(renderBrewery);
+            console.log(beerService.getBreweryDetails(breweryId));
         }
         init();
+
+        function renderBrewery(brewery) {
+            model.brewery = brewery.data;
+            console.log(model.brewery);
+        }
 
     }
 
@@ -42,32 +47,46 @@
         model.getBrewery = getBrewery;
 
         function init() {
-            model.breweryName = null;
         }
         init();
 
         function getBrewery(breweryName) {
-            beerService
-                .getBrewery(model.breweryName)
-                .then(function(response){
-                    model.breweries = response.data.brewery.breweries.brewery
-                });
+            beerService.getBrewery(breweryName)
+                .then(renderBreweries);
         }
-        function toDetails(breweryId) {
+        function renderBreweries(breweries) {
+            model.breweries = breweries.data;
+            console.log(model.breweries)
+        }
+
+        function getBreweryDetails(breweryId) {
             $location.url("/details/" + breweryId);
         }
     }
 
     function beerService($http) {
         this.getBrewery = getBrewery;
+        this.getBreweryDetails = getBreweryDetails;
         this.getBeersFromBrewery = getBeersFromBrewery;
 
         function getBrewery(breweryName) {
-            return $http.get("/api/brewery/" + breweryName);
+            return $http.get("/api/brewery/" + breweryName)
+                .then(function (response) {
+                return response.data
+            });
         }
 
+        function getBreweryDetails(breweryId) {
+            return $http.get("/api/brewery/details/" + breweryId)
+                .then(function (response) {
+                    return response.data
+                });
+        }
+
+
+
         function getBeersFromBrewery(breweryId) {
-            return $http.get("/api/brewery/details" + breweryId);
+            return $http.get("/api/brewery/details/beer" + breweryId + '/beer');
         }
 
 

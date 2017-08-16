@@ -13,15 +13,12 @@
 
 <table class="table">
 
-    <a> {{model.breweries}}</a>
+    <!--<a> {{model.breweries}}</a>-->
     <tr ng-repeat="brewery in model.breweries">
         <td>
-            <a href="#!/details/{{brewery.name}}">
+            <a href="#!/details/{{brewery.id}}">
                 {{brewery.name}}
             </a>
         </td>
-        <!--<td>
-            <img ng-src="{{movie.Poster}}"/>
-        </td>-->
     </tr>
 </table>
