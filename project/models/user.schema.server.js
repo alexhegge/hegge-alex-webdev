@@ -1,4 +1,5 @@
 var mongoose = require("mongoose");
+
 var userSchema = mongoose.Schema({
     username: String,
     password: String,
@@ -8,8 +9,8 @@ var userSchema = mongoose.Schema({
     lastName: String,
     email: String,
     phone: String,
-    websites: [{type: mongoose.Schema.Types.ObjectId, ref:"WebsiteModel"}],
-    //isAdmin: Boolean
+    collections: [{type: mongoose.Schema.Types.ObjectId, ref:"CollectionModel"}],
+    isAdmin: Boolean,
     dateCreated:  {type: Date, default: Date.now}
-}, {collection: "user"});
+}, {collection: "userProject"});
 module.exports = userSchema;

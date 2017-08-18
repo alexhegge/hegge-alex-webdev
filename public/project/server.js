@@ -1,8 +1,8 @@
-var app = require('../../../express');
+var app = require('../../express');
 var request = require('request');
 
 module.exports = {
-    0: getBrewery,
+    0: searchBreweries,
     1: getBreweryDetails,
     2: getBeersFromBrewery
 };
@@ -10,7 +10,7 @@ module.exports = {
 var key = process.env.BREWERY_API_KEY;
 
 // http handlers
-app.get("/api/brewery/:breweryName", getBrewery);
+app.get("/api/brewery/:breweryName", searchBreweries);
 app.get("/api/brewery/details/:breweryId", getBreweryDetails);
 app.get("/api/brewery/beer/:breweryIdr", getBeersFromBrewery);
 
@@ -41,7 +41,7 @@ function getBreweryDetails(req, res) {
 }
 
 
-function getBrewery(req, res) {
+function searchBreweries(req, res) {
     var breweryName = req.params.breweryName;
     var url = "https://api.brewerydb.com/v2/breweries?name=*" +
         breweryName + "*&key=fe31d4b0954ea218ae23fd99f5790eef&format=json";

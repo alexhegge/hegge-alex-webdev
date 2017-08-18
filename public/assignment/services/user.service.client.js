@@ -31,12 +31,7 @@
         function createUser(user) {
             var url = "/api/assignment/user";
 
-
-            console.log(user);
-            return $http.post(url, user)
-                .then(function (response) {
-                    return response.data;
-                })
+            return $http.post(url, user);
 
         }
 

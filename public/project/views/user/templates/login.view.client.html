@@ -1,0 +1,67 @@
+<div class="ach ach-login">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Login
+                    <span class="pull-left glyphicon glyphicon-chevron-left"></span>
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a class= "navbar-brand" href="#/user">
+                        <span class="pull-left glyphicon glyphicon-check"></span>
+                    </a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
+    <div class="container-fluid">
+
+        <div ng-show="model.user" class="alert alert-info">
+            Welcome back {{model.user.username}}
+        </div>
+
+        <div ng-show="model.errorMessage" class="alert alert-danger">
+            {{model.errorMessage}}
+        </div>
+
+        <!--<div ng-controller="LoginController">-->
+
+
+        <label for="username">Username</label>
+        <input name="username"
+               ng-model="model.user.username"
+               placeholder="username"
+               class="form-control"
+               type="text"
+               id="username"/>
+
+        <label for="password">Password</label>
+        <input name="password"
+               ng-model="model.user.password"
+               placeholder="password"
+               type="password"
+               class="form-control"
+               id="password"/>
+
+        <a class="btn btn-default btn-primary btn-block"
+           ng-click= "model.login(model.user)"
+           role="button">Login</a>
+
+        <a class="btn btn-default btn-success btn-block"
+           href="#!/register"
+           role="button">Register</a>
+        <!--</div>-->
+    </div>
+</div>

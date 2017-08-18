@@ -15,12 +15,12 @@ var users = [
 
 
 // http handlers
-app.get("/api/assignment/users", getAllUsers);
-app.get("/api/assignment/user", findUser);
-app.get("/api/assignment/user/:userId", findUserById);
-app.post("/api/assignment/user", createUser);
-app.put("/api/assignment/user/:userId", updateUser);
-app.delete("/api/assignment/user/:userId", deleteUser);
+app.get("/api/project/users", getAllUsers);
+app.get("/api/project/user", findUser);
+app.get("/api/project/user/:userId", findUserById);
+app.post("/api/project/user", createUser);
+app.put("/api/project/user/:userId", updateUser);
+app.delete("/api/project/user/:userId", deleteUser);
 
 function getAllUsers(req, response) {
     userModel
@@ -34,6 +34,8 @@ function updateUser(req, res) {
     var userId = req.params.userId;
     var user = req.body;
 
+    console.log("we made it here")
+
     userModel
         .updateUser(userId, user)
         .then(function (status) {
@@ -45,9 +47,10 @@ function updateUser(req, res) {
 
 
 function createUser(req, res) {
-    console.log(req);
     var user = req.body;
-    console.log(user);
+
+    console.log("were in server create user");
+
     userModel
         .createUser(user)
         .then(function (user) {

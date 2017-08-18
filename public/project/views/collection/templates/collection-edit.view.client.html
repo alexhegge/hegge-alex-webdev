@@ -1,0 +1,83 @@
+<div class="ach ach-website-edit">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#!/user/{{model.user._id}}/collection">Edit Collection
+                    <span class="pull-left glyphicon glyphicon-chevron-left"></span>
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a class= "navbar-brand" href="#!/user/{{model.user._id}}/collection">
+                        <span class="pull-left glyphicon glyphicon-check"></span>
+                    </a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-xs-3 visible-lg ach-split-view-left">
+
+                <div ng-include="'views/collection/templates/collection-list.component.client.html'"></div>
+
+            </div>
+            <div class="col-xs-12 col-lg-9 jga-split-view-right">
+
+                <label for="name">Name</label>
+                <input name="firstName"
+                       ng-model="model.collection.name"
+                       placeholder="Facebook"
+                       class="form-control"
+                       id="name"/>
+
+                <label for="description">Description</label>
+                <textarea name="firstName"
+                          ng-model="model.collection.description"
+                          rows="5"
+                          placeholder="Largest country in the world"
+                          class="form-control"
+                          id="description"></textarea>
+
+
+                <a class="btn btn-default btn-primary btn-block"
+                   href="#!/user/{{model.userId}}/collection"
+                   role="button">Okay</a>
+
+                <a class="btn btn-default btn-warning btn-block"
+                   href="#!/user/{{model.userId}}/collection"
+                   role="button">Cancel</a>
+
+                <a class="btn btn-default btn-danger btn-block"
+                   ng-click="model.deleteCollection(collection)"
+                   role="button">Delete</a>
+            </div>
+        </div>
+
+    </div>
+
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a class="navbar-brand" href="#!/user/{{model.user._id}}">
+                        <span class="pull-right glyphicon glyphicon-user"></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+</div>

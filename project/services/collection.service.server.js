@@ -1,12 +1,12 @@
 var app = require("../../express");
-var websiteModel = require("../models/position.model.server");
+var collectionModel = require("../models/collection.model.server");
 
 
-app.get("/api/assignment/user/:userId/website", findWebsitesByUser);
-app.get("/api/assignment/user/:websiteId", findWebsiteById);
-app.put("/api/assignment/website/:websiteId", updateWebsite);
-app.post("/api/assignment/user/:userId/website", createWebsite);
-app.delete("/api/assignment/website/:websiteId", deleteWebsite);
+app.get("/api/project/user/:userId/collection", findCollectionsByUser);
+app.get("/api/project/user/:collectionId", findCollectionById);
+app.put("/api/project/collection/:collectionId", updateCollection);
+app.post("/api/project/user/:userId/collection", createCollection);
+app.delete("/api/project/collection/:collectionId", deleteCollection);
 
 var websites = [
     { "_id": "123", "name": "Facebook",    "developerId": "456", "description": "Lorem" },
@@ -18,13 +18,13 @@ var websites = [
     { "_id": "789", "name": "Chess",       "developerId": "234", "description": "Lorem" }
 ];
 
-function createWebsite(req, res) {
-    var website = req.body;
+function createCollection(req, res) {
+    var collection = req.body;
     var userId = req.params.userId;
-    websiteModel
-        .createWebsite(userId, website)
-        .then(function (websiteDoc) {
-            res.json(websiteDoc);
+    collectionModel
+        .createCollection(userId, collection)
+        .then(function (collectionDoc) {
+            res.json(collectionDoc);
         }, function (err) {
             res.statusCode(500).send(err);
         })
@@ -35,12 +35,12 @@ function createWebsite(req, res) {
     // res.json(website);
 }
 
-function findWebsiteById(req, res) {
+function findCollectionById(req, res) {
 
-    websiteModel
-        .findWebsiteById(req.params.websiteId)
-        .then(function (websiteDoc) {
-            res.json(websiteDoc);
+    collectionModel
+        .findCollectionById(req.params.collectionId)
+        .then(function (collectionDoc) {
+            res.json(collectionDoc);
         }, function (err) {
             res.sendStatus(404).send(err);
         });
@@ -52,14 +52,14 @@ function findWebsiteById(req, res) {
     // }
 }
 
-function findWebsitesByUser(req, res) {
+function findCollectionsByUser(req, res) {
     var userId = req.params.userId;
 
     console.log(userId);
-    websiteModel
-        .findWebsitesByUser(userId)
-        .then(function (websites) {
-            res.json(websites);
+    collectionModel
+        .findCollectionsByUser(userId)
+        .then(function (collections) {
+            res.json(collections);
         });
 
     //
@@ -74,12 +74,12 @@ function findWebsitesByUser(req, res) {
     // res.json(sites);
 }
 
-function updateWebsite(req, res) {
-    var websiteId = req.params.websiteId;
-    var website = req.body;
+function updateCollection(req, res) {
+    var collectionId = req.params.collectionId;
+    var collection = req.body;
 
-    websiteModel
-        .updateWebsite(websiteId, website)
+    collectionModel
+        .updateCollection(collectionId, collection)
         .then(function (status) {
             res.json(status);
         }, function (err) {
@@ -87,11 +87,11 @@ function updateWebsite(req, res) {
         });
 }
 
-function deleteWebsite(req, res){
-    var websiteId = req.params.websiteId;
+function deleteCollection(req, res){
+    var collectionId = req.params.collectionId;
     var developerId = req.params.userId;
-    websiteModel
-        .deleteWebsite(developerId, websiteId)
+    collectionModel
+        .deleteCollection(developerId, collectionId)
         .then(function (status) {
             res.json(status);
         });

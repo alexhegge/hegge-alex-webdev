@@ -1,8 +1,15 @@
 <h1>Beer API</h1>
-
+<!--
 <h2>{{model.brewery.name}} Details</h2>
 <br>
 <img ng-src="{{model.brewery.images.medium}}"/>
 <br>
 {{model.brewery.description}}
-
+-->
+<table class="table">
+    <tr ng-repeat="beer in model.beers">
+        <td>
+            {{beer.name}}
+        </td>
+    </tr>
+</table>

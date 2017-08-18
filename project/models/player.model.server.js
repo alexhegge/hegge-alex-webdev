@@ -3,7 +3,7 @@
 var mongoose = require("mongoose");
 var pageSchema = require("./player.schema.server");
 var pageModel = mongoose.model("PageModel", pageSchema);
-var websiteModel = require("./position.model.server");
+var websiteModel = require("./collection.model.server");
 
 pageModel.createPage = createPage;
 pageModel.findPagesByWebsiteId = findPagesByWebsiteId;

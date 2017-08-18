@@ -8,6 +8,7 @@
 
         model.createUser = createUser;
 
+
         function createUser(username, password, password2) {
 
             if(password !== password2) {
@@ -25,10 +26,9 @@
                     password: password
                 };
 
-                console.log(user);
                 // model.message = user;
                 userService
-                    .createUser(user)
+                    .createUser(model.user)
                     .then(function (user) {
                         $location.url('/user/' + user._id);
                     });

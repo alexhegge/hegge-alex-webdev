@@ -12,19 +12,12 @@
 <table class="table">
     <tr ng-repeat="brewery in model.breweries">
         <td>
-            <a href="#!/beer/{{brewery.id}}">
+            <a ng-click="model.getBreweryDetails(brewery.id)">
                 {{brewery.name}}
             </a>
         </td>
         <td>
-            <img ng-src="{{brewery.images.medium}}"/>
+            <img ng-src="{{pet.media.photos.photo[0].$t}}"/>
         </td>
-        <td>
-            <a href="#!/beer/{{brewery.id}}">
-                Find Beers
-            </a>
-        </td>
-
-
     </tr>
 </table>

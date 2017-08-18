@@ -12,14 +12,16 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(__dirname + '/public'));;
 
-//require("./test/app");
-//require("./assignment/app");
+require("./test/app");
+require("./project/app");
+
+//require("./assignment/app")
 
 //require("./project_server/football.service.server.js");
 
 //require('./experiments/oxford/oxford.service.server');
 
-require("./public/project/poc2/server.js")
+require("./public/project/server.js")
 
 
 app.listen(process.env.PORT || 3000);
