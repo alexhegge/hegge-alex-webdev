@@ -64,7 +64,7 @@
 
 */
             .when("/user/:userId/collection/new", {
-                templateUrl: "views/search/templates/brewery-search.view.client.html",
+                templateUrl: "views/search/template/brewery-search.view.client.html",
                 controller: "BrewerySearchController",
                 controllerAs: "model"
             })

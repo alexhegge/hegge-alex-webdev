@@ -12,7 +12,7 @@ var key = process.env.BREWERY_API_KEY;
 // http handlers
 app.get("/api/brewery/:breweryName", getBrewery);
 app.get("/api/brewery/details/:breweryId", getBreweryDetails);
-app.get("/api/brewery/beer/:breweryIdr", getBeersFromBrewery);
+app.get("/api/brewery/details/beer/:breweryId/beer", getBeersFromBrewery);
 
 function getBeersFromBrewery(req, res) {
     var breweryId = req.params.breweryId;

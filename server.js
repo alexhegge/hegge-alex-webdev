@@ -21,7 +21,8 @@ require("./project/app");
 
 //require('./experiments/oxford/oxford.service.server');
 
-require("./public/project/server.js")
+require("./public/project/server.js");
+require("./public/project/poc2/server.js")
 
 
 app.listen(process.env.PORT || 3000);

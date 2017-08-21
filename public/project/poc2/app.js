@@ -4,7 +4,6 @@
         .config(configuration)
         .controller("searchController", searchController)
         .controller("detailsController", detailsController)
-        .controller("beerController", beerController)
         .service("beerService", beerService);
 
     function configuration($routeProvider) {
@@ -19,16 +18,10 @@
                 controller: "detailsController",
                 controllerAs: "model"
             })
-            .when("/beer/:breweryId", {
-                templateUrl: "beer.html",
-                controller: "beerController",
-                controllerAs: "model"
-            })
     }
 
     function detailsController($routeParams, beerService) {
         var model = this;
-
 
         breweryId = $routeParams.breweryId;
 
@@ -37,7 +30,7 @@
             beerService
                 .getBreweryDetails(breweryId)
                 .then(renderBrewery);
-            console.log(beerService.getBeersFromBrewery(breweryId));
+            console.log(beerService.getBreweryDetails(breweryId));
         }
         init();
 
@@ -47,30 +40,6 @@
         }
 
     }
-
-    function beerController($routeParams, beerService) {
-        var model = this;
-
-        breweryId = $routeParams.breweryId;
-
-        console.log(breweryId);
-        function init() {
-            beerService
-                .getBeersFromBrewery(breweryId)
-                .then(renderBeers);
-            console.log("we made it!");
-            console.log(beerService.getBeersFromBrewery(breweryId));
-        }
-        init();
-
-        function renderBeers(beers) {
-            model.beers = beers.data;
-            console.log(model.brewery);
-        }
-
-    }
-
-
 
     function searchController(beerService) {
         var model = this;
@@ -95,7 +64,7 @@
         }
     }
 
-    function beerServices($http) {
+    function beerService($http) {
         this.getBrewery = getBrewery;
         this.getBreweryDetails = getBreweryDetails;
         this.getBeersFromBrewery = getBeersFromBrewery;
@@ -103,8 +72,8 @@
         function getBrewery(breweryName) {
             return $http.get("/api/brewery/" + breweryName)
                 .then(function (response) {
-                return response.data
-            });
+                    return response.data
+                });
         }
 
         function getBreweryDetails(breweryId) {
@@ -117,10 +86,7 @@
 
 
         function getBeersFromBrewery(breweryId) {
-            return $http.get("/api/brewery/beer/" + breweryId)
-                .then(function (response) {
-                    return response.data
-                });
+            return $http.get("/api/brewery/details/beer" + breweryId + '/beer');
         }
 
 
