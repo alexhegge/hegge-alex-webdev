@@ -6,19 +6,21 @@
 
     console.log("hihihihi");
 
-        function BrewerySearchController(beerService) {
+        function BrewerySearchController(homeService, $routeParams) {
 
             console.log("baljlijfoiwjefoiwj");
             var model = this;
+            model.userId = $routeParams["userId"];
 
-            model.searchBreweries = searchBreweries;
+
+            model.getBrewery = getBrewery;
 
             function init() {
             }
             init();
 
-            function searchBreweries(breweryName) {
-                beerService.searchBreweries(breweryName)
+            function getBrewery(breweryName) {
+                homeService.getBrewery(breweryName)
                     .then(renderBreweries);
             }
             function renderBreweries(breweries) {

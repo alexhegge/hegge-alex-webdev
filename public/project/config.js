@@ -1,24 +1,32 @@
-(function() {
+(function () {
+
+    console.log("we made it heereeee!");
     angular
-        .module("BeerWebsiteMaker", ["ngRoute"])
+        .module("BeerWebsiteMaker")
         .config(Config);
+
+    console.log("we made it heereeee!");
+
     function Config($routeProvider, $httpProvider) {
+
+        console.log("we made it heereeee!");
 
         $httpProvider.defaults.headers.post['Content-Type'] = 'application/json; charset=utf-8';
         $httpProvider.defaults.headers.post['Accept'] = 'application/json, text/javascript';
         $httpProvider.defaults.headers.post['Access-Control-Max-Age'] = '1728000';
 
+        console.log("we made it heereeee!");
+
         $routeProvider
-            /*
             .when("/", {
-                templateUrl: "views/search/templates/search.html",
-                controller: "SearchController",
+                templateUrl: "views/search/template/brewery-search-main.view.client.html",
+                controller: "BrewerySearchController",
                 controllerAs: "model"
             })
-            */
-            .when("/", {
-                templateUrl: "views/home/home.view.client.html",
-                controller: "HomeController",
+
+            .when("/beer/:breweryId", {
+                templateUrl: "views/search/template/brewery-detail.view.client.html",
+                controller: "detailsController",
                 controllerAs: "model"
             })
 
@@ -45,9 +53,22 @@
                     adminUser: isAdmin
                 }
             })
+
             //.otherwise({
             //    redirectTo: '/login'
             //})
+
+            .when("/user/:userId/search", {
+                templateUrl: "views/search/template/brewery-search-login.view.client.html",
+                controller: "BrewerySearchController",
+                controllerAs: "model"
+            })
+
+            .when("/user/:userId/beer/:breweryId", {
+                templateUrl: "views/search/template/brewery-detail-login.view.client.html",
+                controller: "detailsController",
+                controllerAs: "model"
+            })
 
             //.when("/socialNetwork/:userId/collection", {
             .when("/user/:userId/collection", {
@@ -57,14 +78,14 @@
             })
 /**
             .when("/user/:userId/collection/new", {
-                templateUrl: "views/collection/templates/collection-new.view.client.html",
-                controller: "BeerNewController",
+                templateUrl: "views/search/template/collection-new.view.client.html",
+                controller: "CollectionNewController",
                 controllerAs: "model"
             })
+**/
 
-*/
             .when("/user/:userId/collection/new", {
-                templateUrl: "views/search/template/brewery-search.view.client.html",
+                templateUrl: "views/search/template/brewery-search-login.view.client.html",
                 controller: "BrewerySearchController",
                 controllerAs: "model"
             })
@@ -101,22 +122,22 @@
                 templateUrl: "views/user/templates/socialNetwork-profile.view.client.html",
                 controller: "SocialNetworkProfileController",
                 controllerAs: "model"
-            });
+            })
 
-        function isAdmin($q, userService, $location) {
-            var deferred = $q.defer();
-            userService
-                .isAdmin()
-                .then(function (user) {
-                    if(user == '0') {
-                        deferred.reject();
-                        $location.url('/profile')
-                    } else {
-                        deferred.resolve(user);
-                    }
-                });
-            return deferred.promise;
-        }
+             function isAdmin($q, userService, $location) {
+                 var deferred = $q.defer();
+                 userService
+                     .isAdmin()
+                     .then(function (user) {
+                         if(user == '0') {
+                             deferred.reject();
+                             $location.url('/profile')
+                         } else {
+                             deferred.resolve(user);
+                         }
+                     });
+                 return deferred.promise;
+             }
 
 
     }

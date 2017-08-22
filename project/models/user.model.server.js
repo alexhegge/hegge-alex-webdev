@@ -15,6 +15,9 @@ userModel.getAllUsers = getAllUsers;
 userModel.addCollection = addCollection;
 userModel.removeCollection = removeCollection;
 
+userModel.addBreweryLike = addBreweryLike;
+userModel.deleteBreweryLike = deleteBreweryLike;
+
 module.exports = userModel;
 
 function removeCollection(developerId, collectionId) {
@@ -66,6 +69,25 @@ function deleteUser(userId) {
 
 function getAllUsers() {
     return userModel.find();
+}
+
+function addBreweryLike(userId, brewery) {
+    return userModel
+        .findUserById(userId)
+        .then(function (user) {
+            user.breweries.push(brewery);
+            return user.save();
+        })
+}
+
+function deleteBreweryLike(userId, breweryId) {
+    return userModel
+        .findUserById(userId)
+        .then(function (user) {
+            var index = user.breweries.indexOf(breweryId);
+            user.breweries.splice(index);
+            return user.save();
+        })
 }
 
 

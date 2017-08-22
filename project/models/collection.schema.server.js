@@ -3,7 +3,7 @@ var collectionSchema = mongoose.Schema({
     name: String,
     description: String,
     developer: {type: mongoose.Schema.Types.ObjectId, ref:"UserModel"},
-    beers: [{type: mongoose.Schema.Types.ObjectId, ref:"PageModel"}],
+    breweries: [{name: String, breweryId: String}],
     created: {type: Date, default: Date.now}
-}, {collection: "collectionProject"});
+}, {collection: "collection"});
 module.exports = collectionSchema;

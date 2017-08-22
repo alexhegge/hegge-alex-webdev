@@ -11,7 +11,9 @@
             "createCollection": createCollection,
             "findCollectionById": findCollectionById,
             "updateCollection": updateCollection,
-            "deleteCollection": deleteCollection
+            "deleteCollection": deleteCollection,
+            "addBrewery": addBrewery,
+            "deleteBrewery": deleteBrewery
         };
         return api;
 
@@ -20,6 +22,8 @@
         this.findCollectionById = findCollectionById;
         this.updateCollection = updateCollection;
         this.deleteCollection = deleteCollection;
+        this.addBrewery = addBrewery;
+        this.deleteBrewery = deleteBrewery;
 
 
 
@@ -51,6 +55,16 @@
 
         function deleteCollection(userId, collectionId) {
             var url = "/api/project/user/" + userId + "/collection/" + collectionId;
+            return $http.delete(url);
+        }
+
+        function addBrewery(userId, collectionId, brewery) {
+            var url = "/api/project/user/" + userId + "/collection/" + collectionId + "/brewery/" + brewery;
+            return $http.put(url);
+        }
+
+        function deleteBrewery(userId, collectionId, breweryId) {
+            var url = "/api/project/user/" + userId + "/collection/" + collectionId + "/brewery/" + breweryId;
             return $http.delete(url);
         }
 

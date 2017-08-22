@@ -27,6 +27,7 @@ function getBeersFromBrewery(req, res) {
 }
 
 function getBreweryDetails(req, res) {
+
     var breweryId = req.params.breweryId;
 
     console.log(breweryId);

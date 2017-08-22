@@ -1,6 +1,3 @@
-/**
- * Created by Alex on 7/23/17.
- */
 (function () {
 
     angular
@@ -13,6 +10,9 @@
         $httpProvider.defaults.headers.post['Content-Type'] = 'application/json; charset=utf-8';
         $httpProvider.defaults.headers.post['Accept'] = 'application/json, text/javascript';
         $httpProvider.defaults.headers.post['Access-Control-Max-Age'] = '1728000';
+
+
+        console.log("we made it heereeee!");
 
 
         $routeProvider

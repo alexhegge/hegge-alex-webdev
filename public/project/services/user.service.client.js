@@ -15,6 +15,8 @@
             "findUserByCredentials": findUserByCredentials,
             "updateUser": updateUser,
             "deleteUser": deleteUser,
+            "likeBrewery": likeBrewery,
+            "unlikeBrewery": unlikeBrewery,
             //"followUser": followUser
         };
         return api;
@@ -79,6 +81,16 @@
             return $http.put(url)
         }
 **/
+
+        function likeBrewery(userId, breweryId, brewery) {
+            var url = "/api/project/user/" + userId + "/brewery/" + breweryId + "/like";
+            return $http.put(url, brewery);
+        }
+
+        function unlikeBrewery(userId, breweryId, brewery) {
+            var url = "/api/project/user/" + userId + "/brewery/" + breweryId + "/like";
+            return $http.put(url, brewery);
+        }
 
 
     }

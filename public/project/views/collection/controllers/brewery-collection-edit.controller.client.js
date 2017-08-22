@@ -1,4 +1,6 @@
-
+/**
+ * Created by Alex on 7/23/17.
+ */
 (function () {
     angular
         .module("BeerWebsiteMaker")
@@ -12,10 +14,10 @@
 
         model.deleteCollection = deleteCollection;
         model.updateCollection = updateCollection;
-        model.createCollection= createCollection;
+        model.createCollection = createCollection;
 
         function init() {
-            model.collectionss = collectionService.findCollectionsByUser(model.userId);
+            model.collections = collectionService.findCollectionsByUser(model.userId);
             model.collection = collectionService.findCollectionById(model.collectionId);
         }
         init();
@@ -36,14 +38,13 @@
                     $location.url("/user/" + model.userId + "/collection")
                 });
         }
-        /**
-         function createWebsite(website) {
-            website.developerId = model.userId;
-            websiteService.createWebsite(website);
-         $location.url('/user/'+model.userId+'/website');
+        function createCollection(collection) {
+            collection.developerId = model.userId;
+            collectionService.createCollection(collection);
+            $location.url('/user/'+model.userId+'/collection');
          }
 
-**/
+
     }
 
 })();

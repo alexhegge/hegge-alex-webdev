@@ -9,8 +9,8 @@ var userSchema = mongoose.Schema({
     lastName: String,
     email: String,
     phone: String,
-    collections: [{type: mongoose.Schema.Types.ObjectId, ref:"CollectionModel"}],
+    breweries: [{type: mongoose.Schema.Types.ObjectId, ref:"userModel"}],
     isAdmin: Boolean,
     dateCreated:  {type: Date, default: Date.now}
-}, {collection: "userProject"});
+}, {collection: "user"});
 module.exports = userSchema;

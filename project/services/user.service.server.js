@@ -21,6 +21,8 @@ app.get("/api/project/user/:userId", findUserById);
 app.post("/api/project/user", createUser);
 app.put("/api/project/user/:userId", updateUser);
 app.delete("/api/project/user/:userId", deleteUser);
+app.put("/api/project/user/:userId/brewery/:breweryId/like", likeBrewery);
+app.put("/api/project/user/:userId/brewery/:breweryId/unlike", unlikeBrewery);
 
 function getAllUsers(req, response) {
     userModel
@@ -34,7 +36,7 @@ function updateUser(req, res) {
     var userId = req.params.userId;
     var user = req.body;
 
-    console.log("we made it here")
+    console.log("we made it here");
 
     userModel
         .updateUser(userId, user)
@@ -111,4 +113,36 @@ function deleteUser(req, response) {
         .then(function (status) {
             response.sendStatus(200);
         });
+}
+
+function likeBrewery(req, res) {
+
+    var userId = req.params.userId;
+    var breweryId = req.params.breweryId;
+
+    userModel
+        .addBreweryLike(userId, breweryId)
+        .then(function (status) {
+            res.json(status);
+        }, function (err) {
+            res.status(500).send(err);
+        })
+}
+
+
+function unlikeBrewery(req, res) {
+    var userId = req.params.userId;
+    var breweryId = req.params.breweryId;
+
+
+
+    userModel
+        .deleteBreweryLike(userId, breweryId)
+        .then(function (status) {
+            res.json(status);
+        }, function (err) {
+            res.status(500).send(err);
+        })
+
+
 }

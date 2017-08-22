@@ -9,5 +9,3 @@ require("./models/database.js");
 
 require("./services/user.service.server.js");
 require("./services/collection.service.server.js");
-require("./services/page.service.server.js");
-require("./services/widget.service.server.js");

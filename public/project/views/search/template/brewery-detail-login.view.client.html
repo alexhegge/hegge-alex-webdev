@@ -1,0 +1,59 @@
+
+<!-- Fixed navbar -->
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#!/user/{{model.userId}}/collection">Collection
+                <span class="pull-left glyphicon glyphicon-chevron-left"></span>
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a class= "navbar-brand" href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page">
+                    <span class="pull-left glyphicon glyphicon-check"></span>
+                </a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<div class="container-fluid">
+    <h2>{{model.brewery.name}} Details</h2>
+    <br>
+    <img ng-src="{{model.brewery.images.medium}}"/>
+    <br>
+    <p>{{model.brewery.description}}</p>
+
+    <div ng-hide="model.liked">
+        <a class="btn btn-default btn-info" ng-click="model.like()">Like Brewery</a>
+    </div>
+
+    <div ng-show="model.liked">
+        <a class="btn btn-default btn-danger" ng-click="model.unlike()">Unlike Brewery</a>
+    </div>
+
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a class="navbar-brand" href="#!/user/{{model.user._id}}">
+                    <span class="pull-right glyphicon glyphicon-user"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+

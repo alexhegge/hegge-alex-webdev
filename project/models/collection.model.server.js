@@ -10,8 +10,8 @@ collectionModel.findCollectionById = findCollectionById;
 collectionModel.deleteCollection = deleteCollection;
 collectionModel.updateCollection = updateCollection;
 
-collectionModel.addPage = addPage;
-collectionModel.deletePage = deletePage;
+collectionModel.addBrewery = addBrewery;
+collectionModel.deleteBrewery = deleteBrewery;
 
 module.exports = collectionModel;
 
@@ -51,25 +51,21 @@ function deleteCollection(developerId, collectionId) {
         });
 }
 
-function deletePage(collectionId, pageId) {
+function deleteBrewery(collectionId, breweryId) {
     return collectionModel
-        .findById(collectionId)
+        .findCollectionById(collectionId)
         .then(function (collection) {
-            var index = collection.pages.indexOf(pageId);
-            collection.pages.splice(index, 1);
+            var index = collection.breweries.indexOf(breweryId);
+            collection.breweries.splice(index, 1);
             return collection.save();
         })
 }
 
-function addPage(collectionId, pageId) {
+function addBrewery(collectionId, breweryId) {
     return collectionModel
-        .findById(collectionId)
+        .findCollectionById(collectionId)
         .then(function (collection) {
-            collection.pages.push(pageId);
+            collection.breweries.push(breweryId);
             return collection.save();
         });
 }
-
-
-
-

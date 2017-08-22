@@ -4,10 +4,11 @@
     console.log("yo");
 
     angular
-        .module("BeerWebsiteMaker", [])
+        .module("BeerWebsiteMaker")
         .service("homeService", homeService);
 
     function homeService($http) {
+        console.log("heerreee");
         this.getBrewery = getBrewery;
         this.getBreweryDetails = getBreweryDetails;
         this.getBeersFromBrewery = getBeersFromBrewery;
